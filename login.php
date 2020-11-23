@@ -9,11 +9,11 @@
                 <form method="post" action="login_code.php">
                     <div class="form-group">
                         <label>Usuario</label>
-                        <input name="" class="form-control" placeholder="Usuario" type="email">
+                        <input name="" class="form-control" placeholder="Usuario" type="email" required>
                     </div> <!-- form-group// -->
                     <div class="form-group">
                         <label>Contraseña</label>
-                        <input class="form-control" placeholder="******" type="password">
+                        <input class="form-control" placeholder="******" type="password" required>
                     </div> <!-- form-group// --> 
                     <div class="form-group">
                     <div class="form-group">

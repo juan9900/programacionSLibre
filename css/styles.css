@@ -1,0 +1,11 @@
+.main-form{
+    margin: 10rem auto;
+}
+
+input.btn.btn-buscar{
+    margin-top: 2rem;
+}
+
+.busqueda{
+    display: inline-block;
+}

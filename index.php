@@ -11,32 +11,37 @@
 
                     <div class="form-group">
                         <label>Nombre</label>
-                        <input name="uNombre" class="form-control" placeholder="Nombre" type="text" >
+                        <input name="uNombre" class="form-control" placeholder="Nombre" type="text" required>
                     </div> <!-- form-group// -->
 
                     <div class="form-group">
                         <label>Apellido</label>
-                        <input name="uApellido" class="form-control" placeholder="Apellido" type="text" >
+                        <input name="uApellido" class="form-control" placeholder="Apellido" type="text" required>
+                    </div> <!-- form-group// -->
+
+                    <div class="form-group">
+                        <label>Cédula</label>
+                        <input name="uCedula" class="form-control" placeholder="12345678" type="number" required>
                     </div> <!-- form-group// -->
 
                     <div class="form-group">
                         <label>Usuario</label>
-                        <input name="uUsuario" class="form-control" placeholder="Usuario" type="text" maxlength="12" >
+                        <input name="uUsuario" class="form-control" placeholder="Usuario" type="text" maxlength="12" required>
                     </div> <!-- form-group// -->
 
                     <div class="form-group">
                         <label>Correo</label>
-                        <input name="uCorreo" class="form-control" placeholder="ejemplo@gmail.com" type="email" maxlength="30">
+                        <input name="uCorreo" class="form-control" placeholder="ejemplo@gmail.com" type="email" maxlength="30" required>
                     </div> <!-- form-group// -->
 
                     <div class="form-group">
                         <label>Contraseña</label>
-                        <input name="uContrasena" class="form-control" placeholder="******" type="password" maxlength="15" >
+                        <input name="uContrasena" class="form-control" placeholder="******" type="password" maxlength="15" required>
                     </div> <!-- form-group// --> 
 
                     <div class="form-group">
                         <label>Confirmar Contraseña</label>
-                        <input name="uContrasenaC" class="form-control" placeholder="******" type="password" maxlength="15" >
+                        <input name="uContrasenaC" class="form-control" placeholder="******" type="password" maxlength="15" required>
                     </div> <!-- form-group// --> 
 
                     <div class="form-group">
