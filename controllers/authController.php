@@ -87,10 +87,11 @@ if(isset($_POST['registrar-btn'])){
             $_SESSION['id'] = $user_id;
             $_SESSION['usuario'] = $usuario;
             $_SESSION['contrasena'] = $contrasena;
+            $_SESSION['correo'] = $correo;
             //Mostrar un mensaje
             $_SESSION['message'] = "Te has logeado!";
             $_SESSION['alert-class'] = "alert-success";
-            header("Location: welcome.php");
+            header("Location: index.php");
             exit();
         } else {
             $errores['db_error'] = "Error de Base de Datos: Error al registrar";
@@ -98,11 +99,63 @@ if(isset($_POST['registrar-btn'])){
 
     }
 
-    
-
-    
-    
-
 }
 
+    //Si el usuario presiona el boton de login
+    if(isset($_POST['login-btn'])){
+        $usuario = $_POST['uUsuario'];
+        $contrasena = $_POST['uContrasena'];
+
+        //Asegurar que los cuadros del form se hayan rellenado
+        if(empty($usuario)){
+            $errores['username'] = "El nombre de usuario es requerido.";
+        }
+
+        if(empty($contrasena)){
+            $errores['contrasena'] = "La contraseña es requerida.";
+        }
+
+        if(count($errores) === 0 ){
+            $sql = "SELECT * FROM usuarios WHERE correo=? OR usuario=? LIMIT 1";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ss", $usuario, $usuario);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $user = $result->fetch_assoc();
+
+        
+            if(isset($user)){
+                if (md5($contrasena) == $user['contrasena']){
+                    //El usuario ha proporcionado las credenciales correctas
+                    $_SESSION['id'] = $user['id'];
+                    $_SESSION['usuario'] =$user['usuario'];
+                    $_SESSION['contrasena'] = $user['contrasena'];
+                    $_SESSION['correo'] = $user['correo'];
+                    //Mostrar un mensaje
+                    $_SESSION['message'] = "Te has logeado!";
+                    $_SESSION['alert-class'] = "alert-success";
+                    header("Location: index.php");
+                } else {
+                    $errores['Login_fail'] = "Error de credenciales";
+                }
+            } else {
+                $errores['Login_fail'] = "Error de credenciales";
+            }
+            
+        }
+
+        
+    }
+
+
+
+//Logout usuario
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['usuario']);
+    unset($_SESSION['correo']);
+    unset($_SESSION['contrasena']);
+    header("location: login.php");
+    exit();
+}
 ?>

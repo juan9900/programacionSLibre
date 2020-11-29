@@ -1,6 +1,17 @@
-<?php include("includes/header.php")?>
+<?php include("includes/headerIndex.php");
+require_once 'controllers/authController.php'; 
+require_once 'controllers/searchController.php';
 
+
+if(!$_SESSION['id']) {
+    header('location:login.php');
+    exit();
+}
+?>
 <div class="container p-5">
+    <div class="alert <?php echo $_SESSION['alert-class']; ?>">
+        <?php echo $_SESSION['message']; ?>
+    </div>
     <h2 class="busqueda"> Buscar Usuarios</h2>
     <div class="row">
 
@@ -8,16 +19,16 @@
 
             <div class="card card-body">
 
-                <form method="post" class="form-item">
+                <form method="post" class="form-item" action="index.php">
 
                     <div class="form-group">
                         <fieldset>
                             <label for="item">Nombre de usuario</label>
-                            <input type="text" required name="item" class="form-control">
+                            <input type="text" required name="uUsuario" class="form-control">
                         </fieldset>
                         
                         <input type="submit" class="btn btn-success btn-block form-control btn-submit btn-buscar"
-                        name="save_task" value="Buscar" >
+                        name="buscar-btn" value="Buscar" >
                     </div>
                 </form>
             </div>
@@ -33,7 +44,10 @@
                         <th>Cédula</th>
                     </tr>
                 </thead>
-                
+                <tbody>
+                    <?php
+                        //Solicitar a la base de datos la informacion del usuario que se busque 
+                </tbody>
             </table>
         </div>
     </div>
