@@ -1,55 +1,44 @@
-
 <?php include("includes/header.php")?>
-<div class="container">
-    <div class="row d-flex justify-content-center main-form">
-        <div class="card col-lg-4">
-            <article class="card-body">
-            
-                <a href="login.php" class="float-right btn btn-outline-primary">Entrar</a>
-                <h4 class="card-title mb-4 mt-1">Registrarse</h4>
-                <form action="register_code.php"method="post">
+
+<div class="container p-5">
+    <h2 class="busqueda"> Buscar Usuarios</h2>
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <div class="card card-body">
+
+                <form method="post" class="form-item">
 
                     <div class="form-group">
-                        <label>Nombre</label>
-                        <input name="uNombre" class="form-control" placeholder="Nombre" type="text" required>
-                    </div> <!-- form-group// -->
-
-                    <div class="form-group">
-                        <label>Apellido</label>
-                        <input name="uApellido" class="form-control" placeholder="Apellido" type="text" required>
-                    </div> <!-- form-group// -->
-
-                    <div class="form-group">
-                        <label>Cédula</label>
-                        <input name="uCedula" class="form-control" placeholder="12345678" type="number" required>
-                    </div> <!-- form-group// -->
-
-                    <div class="form-group">
-                        <label>Usuario</label>
-                        <input name="uUsuario" class="form-control" placeholder="Usuario" type="text" maxlength="12" required>
-                    </div> <!-- form-group// -->
-
-                    <div class="form-group">
-                        <label>Correo</label>
-                        <input name="uCorreo" class="form-control" placeholder="ejemplo@gmail.com" type="email" maxlength="30" required>
-                    </div> <!-- form-group// -->
-
-                    <div class="form-group">
-                        <label>Contraseña</label>
-                        <input name="uContrasena" class="form-control" placeholder="******" type="password" maxlength="15" required>
-                    </div> <!-- form-group// --> 
-
-                    <div class="form-group">
-                        <label>Confirmar Contraseña</label>
-                        <input name="uContrasenaC" class="form-control" placeholder="******" type="password" maxlength="15" required>
-                    </div> <!-- form-group// --> 
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block"> Sign-Up  </button>
-                    </div> <!-- form-group// -->                                                           
+                        <fieldset>
+                            <label for="item">Nombre de usuario</label>
+                            <input type="text" required name="item" class="form-control">
+                        </fieldset>
+                        
+                        <input type="submit" class="btn btn-success btn-block form-control btn-submit btn-buscar"
+                        name="save_task" value="Buscar" >
+                    </div>
                 </form>
-            </article>
+            </div>
         </div>
-    </div> <!-- card.// -->
+
+        <div class="col-md-8 table-responsive table-item">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Cédula</th>
+                    </tr>
+                </thead>
+                
+            </table>
+        </div>
+    </div>
 </div>
+
+
+
 <?php include("includes/footer.php")?>
