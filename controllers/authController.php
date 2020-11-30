@@ -47,30 +47,35 @@ if(isset($_POST['registrar-btn'])){
         $errores['contrasena'] = "La contraseña es requerida.";
     }
 
-    //Si no hay errores, se verifica que el correo no exista ya los datos en la base de datos 
-    $emailQuery = "SELECT * FROM usuarios WHERE correo=? LIMIT 1";
-    $stmt = $conn->prepare($emailQuery);
-    $stmt->bind_param('s', $correo);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $userCount = $result->num_rows;
-    $stmt->close();
-    if($userCount > 0){
-         $errores['correo'] = "El correo ya existe.";
+    if(!is_numeric($cedula)){
+        $errores['cedula'] = "Cédula inválida.";
     }
 
-    //Si no hay errores se verifica que el usuario no exista ya en los datos de la base de datos
-    $usuarioQuery = "SELECT * FROM usuarios WHERE usuario=? LIMIT 1";
-    $stmt = $conn->prepare($usuarioQuery);
-    $stmt->bind_param('s', $usuario);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $userCount = $result->num_rows;
-    $stmt->close();
-    if($userCount > 0){
-         $errores['usuario'] = "El nombre de usuario ya existe.";
-    }
+    if(count($errores) === 0){
+        //Si no hay errores, se verifica que el correo no exista ya los datos en la base de datos 
+        $emailQuery = "SELECT * FROM usuarios WHERE correo=? LIMIT 1";
+        $stmt = $conn->prepare($emailQuery);
+        $stmt->bind_param('s', $correo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $userCount = $result->num_rows;
+        $stmt->close();
+        if($userCount > 0){
+            $errores['correo'] = "El correo ya existe.";
+        }
 
+        //Si no hay errores se verifica que el usuario no exista ya en los datos de la base de datos
+        $usuarioQuery = "SELECT * FROM usuarios WHERE usuario=? LIMIT 1";
+        $stmt = $conn->prepare($usuarioQuery);
+        $stmt->bind_param('s', $usuario);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $userCount = $result->num_rows;
+        $stmt->close();
+        if($userCount > 0){
+            $errores['usuario'] = "El nombre de usuario ya existe.";
+        }
+    }
 
 
 
